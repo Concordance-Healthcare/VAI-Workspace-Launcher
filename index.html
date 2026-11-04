@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VAI Workspace Launcher</title>
+</head>
+<body>
+    <h2>VAI Workspace Launcher</h2>
+    <p id="status">Opening VAI workspace...</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const path = params.get("p");
+
+        if (path) {
+            const vaiUrl = "vai:" + path;
+
+            document.getElementById("status").innerHTML =
+                'Opening <strong>' + path + '</strong><br><br>' +
+                '<a href="' + vaiUrl + '">Click here if the workspace does not open automatically</a>';
+
+            window.location.href = vaiUrl;
+        } else {
+            document.getElementById("status").textContent =
+                "No VAI workspace path was specified.";
+        }
+    </script>
+</body>
+</html>
